@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Calculator</title>
+     <script src="https://unpkg.com/vue@3"></script>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+        }
+
+        .calculator {
+            background-color: rgb(199, 36, 36);
+            padding: 20px;
+            border-radius: 10px;
+            width: 320px;
+        }
+
+        .display {
+            width: calc(100% - 20px);
+            margin-bottom: 10px;
+            padding: 10px;
+            font-size: 24px;
+            border: none;
+            background-color: #333;
+            color: white;
+        }
+
+        .keys {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-gap: 10px;
+        }
+
+        button {
+            padding: 15px;
+            font-size: 20px;
+            border: none;
+            background-color: #666;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:nth-child(4){
+            background-color: orange;
+        }
+        button:nth-child(2){
+            background-color: red;
+        }
+        button:nth-child(8){
+            background-color: orange;
+        }
+        button:nth-child(12){
+            background-color: orange;
+        }
+        button:nth-child(16){
+            background-color: orange;
+        }
+        button:hover {
+            background-color: #444;
+        }
+        button:nth-child(20){
+            background-color: green;
+        }
+        button:nth-child(3){
+            background-color: orange;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="calculator" id="app">
+        <input type="text" class="display" id="display" disabled>
+        <div class="keys">
+            <button class="button" @click="clear">AC</button>
+            <button class="button" @click="deleteByone">DEL</button>
+            <button class="button" @click="add('%')">%</button>
+            <button class="button" @click="add('/')">/</button>
+            <button class="button" @click="add('7')">7</button>
+            <button class="button" @click="add('8')">8</button>
+            <button class="button" @click="add('9')">9</button>
+            <button class="button" @click="add('*')">*</button>
+            <button class="button" @click="add('4')">4</button>
+            <button class="button" @click="add('5')">5</button>
+            <button class="button" @click="add('6')">6</button>
+            <button class="button" @click="add('-')">-</button>
+            <button class="button" @click="add('1')">1</button>
+            <button class="button" @click="add('2')">2</button>
+            <button class="button" @click="add('3')">3</button>
+            <button class="button" @click="add('+')">+</button>
+            <button class="button" @click="add('0')">0</button>
+            <button class="button" @click="add('00')">00</button>
+            <button class="button" @click="add('.')">.</button>
+            <button class="button" @clcik="calculator">=</button>
+        </div>
+    </div>
+    <script>
+        // Add vue code here
+        const app = Vue.createApp({
+            data(){
+                return{
+                    display : ''
+                }
+            },
+            methods: {
+               clear(){
+                    display : '';
+               },
+               deleteByOne(){
+                    this.display = this.display.slice(0,-1);
+               },
+               add(val){
+                    this.display += val
+               },
+               caculator(){
+                    let result = eval(this.display);
+                    if(Number.isInteger(result)){
+                        this.display = result.toSring();
+                    }else{
+                        this.display = result.toFixed(2);
+                    }
+               }
+
+            },
+        });
+        app.mount('#app');
+    </script>
+</body>
+
+</html>
