@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@3"></script>
+</head>
+<body>
+    <div id="app">
+        <h1>Student : {{ name }}</h1>
+        <h1>{{ age }}</h1>
+        <p>This Course is : {{ course }}</p>
+        <p>Year : {{ year }}</p>
+        <p>{{ name + " is studying " + course + " in " + year}}</p>
+        <p>Please input your age : </p>
+        <input type="number" v-model="age">
+        <p>Please input your name : </p>
+        <input type="text" v-model="name">
+        <p>Please input course</p>
+        <input type="text" v-model="course">
+        <p>Please input year</p>
+        <input type="text" v-model="year"> <br>
+
+        <button @click="clearData" >Clear</button>
+    </div>
+    <script>
+         const app = Vue.createApp({
+            data(){
+                return{
+                    name : "",
+                    course : "",
+                    year : null,
+                    age : null,
+                
+
+                }
+            },
+           methods: {
+                clearData(){
+                    this.name = "",
+                    this.age = "",
+                    this.year = "",
+                    this.course = ""
+                },
+           },
+        
+         
+        })
+        app.mount("#app")
+    </script>
+</body>
+</html>
